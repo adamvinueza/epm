@@ -6,31 +6,27 @@
 (define (bst-make n left right)
   (list n left right))
 
-; Alias for checking empty list
-(define (bst-isempty? bst)
-  (null? bst))
-
 ; Get the value of the bst's root node
 (define (bst-value bst)
-  (if (bst-isempty? bst)
+  (if (null? bst)
     bst
     (car bst)))
 
 ; Get the bst's left subtree
 (define (bst-left bst)
-  (if (bst-isempty? bst)
+  (if (null? bst)
     bst
     (cadr bst)))
 
 ; Get the bst's  right subtree
 (define (bst-right bst)
-  (if (bst-isempty? bst)
+  (if (null? bst)
     bst
     (caddr bst)))
 
 ; Add the value n to the bst
 (define (bst-add bst n)
-  (if (bst-isempty? bst)
+  (if (null? bst)
     (bst-make n '() '())
     (if (< n (bst-value bst))
         (bst-make (bst-value bst)
@@ -44,13 +40,13 @@
 
 ; Add a list of values to the bst
 (define (bst-add-list bst lst)
-  (if (bst-isempty? lst)
+  (if (null? lst)
     bst
     (bst-add-list (bst-add bst (car lst)) (cdr lst))))
 
 ; Traverse bst in-order (sorted ascending)
 (define (bst-traverse-inorder bst)
-  (if (bst-isempty? bst)
+  (if (null? bst)
     bst
     (append (bst-traverse-inorder (bst-left bst))
             (list (bst-value bst))
@@ -58,7 +54,7 @@
 
 ; Traverse bst pre-order (root, left, right)
 (define (bst-traverse-preorder bst)
-  (if (bst-isempty? bst)
+  (if (null? bst)
     bst
     (append 
             (list (bst-value bst))
@@ -67,7 +63,7 @@
 
 ; Traverse bst post-order (left, right, root)
 (define (bst-traverse-postorder bst)
-  (if (bst-isempty? bst)
+  (if (null? bst)
     bst
     (append 
             (bst-traverse-postorder (bst-left bst))
