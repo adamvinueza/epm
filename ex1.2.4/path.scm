@@ -1,6 +1,5 @@
-#|
-Return a list of lefts and rights showing how to find the node containing n.
-|#
+; Return a list of lefts and rights showing how to find the node containing n.
+; Assumes that n is actually in the bst.
 (define (path n bst)
   (if (null? bst)
     '() ; we're done
