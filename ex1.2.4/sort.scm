@@ -16,10 +16,10 @@
     (+ 1 (length (cdr lst)))))
 
 ; get the items starting from index n in lst
-(define (tail-from n lst)
+(define (take-from n lst)
   (if (or (null? lst) (= n 0))
     lst
-    (tail-from (- n 1) (cdr lst))))
+    (take-from (- n 1) (cdr lst))))
 
 ; take the first n items in lst
 (define (take n lst)
@@ -29,7 +29,7 @@
 
 ; split lst at idx
 (define (split idx lst)
-  (cons (take idx lst) (list (tail-from idx lst))))
+  (cons (take idx lst) (list (take-from idx lst))))
 
 ; sort lst in order by pred
 (define (sort-pred pred lst)
